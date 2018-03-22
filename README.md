@@ -1,5 +1,8 @@
 # React start kit
 ## installed ##
+- Typescript
+- Webpack
+- Webpack-dev-server
 - React
 - React Dom
 - React Redux
