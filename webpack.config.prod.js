@@ -33,5 +33,11 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [extractSass, new UglifyJsPlugin({ sourceMap: true })],
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production"),
+    }),
+    extractSass,
+    new UglifyJsPlugin({ sourceMap: true }),
+  ],
 });
