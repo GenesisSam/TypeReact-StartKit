@@ -14,3 +14,7 @@
   - postCss
   - css-loader
   - scss-loader
+
+- Babel
+  - polyfill
+  - preset-es2015
