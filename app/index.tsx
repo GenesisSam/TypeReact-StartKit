@@ -5,9 +5,14 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 
+import { createBrowserHistory } from "history";
+import { ConnectedRouter } from "react-router-redux";
+
 import Hello from "./common/test";
 import rootReducer from "./rootReducer";
+import { Switch, Route } from "react-router";
 
+const history = createBrowserHistory();
 const middleWares: any = [thunk];
 
 if (process.env.NODE_ENV === "development") {
@@ -18,7 +23,11 @@ const store = createStore(rootReducer, applyMiddleware(...middleWares));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route exact component={Hello} />
+      </Switch>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("mainContainer"),
 );
