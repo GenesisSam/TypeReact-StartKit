@@ -25,7 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/hello" component={() => (<div>H3llo World!</div>)} />
+        <Route exact path="/hello" component={() => <div>H3llo World!</div>} />
         <Route exact component={Hello} />
       </Switch>
     </ConnectedRouter>
