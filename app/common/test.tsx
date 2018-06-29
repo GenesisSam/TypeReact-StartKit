@@ -19,8 +19,23 @@ class Hello extends React.Component<IProps> {
   }
 
   public render() {
-    return <div className={styles.wrapper}>Hello world with typescript</div>;
+    return (
+      <div className={styles.wrapper}>
+        {Notification
+          ? "Can use Notification API"
+          : "Can't use Notification API "}
+        <button>Notification!</button>
+      </div>
+    );
   }
+
+  private onClick = () => {
+    Notification.requestPermission(status => {
+      if ((Notification as any).permission !== status) {
+        console.log("Different noti permission!: ", status);
+      }
+    });
+  };
 }
 
 export default connect(mapStateToProps)(Hello);
