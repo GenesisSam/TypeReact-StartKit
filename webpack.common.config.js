@@ -1,5 +1,8 @@
 const webpack = require("webpack");
-const { TsConfigPathsPlugin, CheckerPlugin } = require("awesome-typescript-loader");
+const {
+  TsConfigPathsPlugin,
+  CheckerPlugin
+} = require("awesome-typescript-loader");
 
 module.exports = {
   entry: ["babel-polyfill", "./app/index.tsx"],
@@ -14,12 +17,10 @@ module.exports = {
     plugins: [new TsConfigPathsPlugin()],
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
+        use: [{
             loader: "babel-loader",
             options: {
               cacheDirectory: true,
@@ -41,15 +42,14 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        use: [
-          {
+        use: [{
             loader: "style-loader",
           },
           {
             loader: "css-loader",
             options: {
               modules: true,
-              localIdentName: "[path][name]__[local]--[hash:base64:5]",
+              localIdentName: "[path][name]__[local]__[hash:base64:5]",
             },
           },
           {

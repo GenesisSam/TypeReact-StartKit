@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 
 import { createBrowserHistory } from "history";
-import { ConnectedRouter } from "react-router-redux";
+import { ConnectedRouter } from "connected-react-router";
 
 import Hello from "./common/test";
 import rootReducer from "./rootReducer";
@@ -19,7 +19,10 @@ if (process.env.NODE_ENV === "development") {
   middleWares.push(createLogger());
 }
 
-const store = createStore(rootReducer, applyMiddleware(...middleWares));
+const store = createStore(
+  rootReducer(history),
+  applyMiddleware(...middleWares)
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -30,5 +33,5 @@ ReactDOM.render(
       </Switch>
     </ConnectedRouter>
   </Provider>,
-  document.getElementById("mainContainer"),
+  document.getElementById("mainContainer")
 );

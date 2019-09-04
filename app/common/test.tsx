@@ -1,20 +1,25 @@
 import * as React from "react";
-import { Dispatch, connect } from "react-redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const styles = require("./test.scss");
-
-interface IProps {
-  dispatch: Dispatch<any>;
-}
 
 function mapStateToProps(state: any) {
   return {};
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ dispatch }, dispatch);
+}
+
+interface IProps
+  extends ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps> {}
+
 class Hello extends React.Component<IProps> {
   public componentDidMount() {
     this.props.dispatch({
-      type: "HELLO!",
+      type: "HELLO!"
     });
   }
 
@@ -38,4 +43,7 @@ class Hello extends React.Component<IProps> {
   };
 }
 
-export default connect(mapStateToProps)(Hello);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Hello);
