@@ -1,5 +1,7 @@
 # React start kit
-## installed ##
+
+## installed
+
 - Typescript
 - Webpack
 - Webpack-dev-server
@@ -9,8 +11,9 @@
   - thunk
   - redux-logger
 - React Router
-- React Router Redux
+- Connected Router Redux
 - SCSS loader
+
   - postCss
   - css-loader
   - scss-loader
