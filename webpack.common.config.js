@@ -3,27 +3,29 @@ const {
   TsConfigPathsPlugin,
   CheckerPlugin
 } = require("awesome-typescript-loader");
+const path = require("path");
 
 module.exports = {
-  entry: ["babel-polyfill", "./app/index.tsx"],
-  devtool: "source-map",
-  output: {
-    path: __dirname + "/dist",
-    publicPath: "dist",
-    filename: "bundle.js",
+  entry: {
+    main: "./app/index.tsx",
+    vendor: ["react", "react-dom"],
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     plugins: [new TsConfigPathsPlugin()],
   },
+  devtool: "source-map",
   module: {
     rules: [{
         test: /\.tsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: new RegExp(
+          "node_modules/(?!(react-intl)/).*"
+        ),
         use: [{
             loader: "babel-loader",
             options: {
               cacheDirectory: true,
+              presets: ["@babel/preset-env", "@babel/preset-typescript"],
             },
           },
           {
@@ -38,32 +40,6 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         loader: "source-map-loader",
-      },
-
-      {
-        test: /\.scss$/,
-        use: [{
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[path][name]__[local]__[hash:base64:5]",
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              config: {
-                path: "./postcss.config.js",
-              },
-            },
-          },
-          {
-            loader: "sass-loader",
-          },
-        ],
       },
     ],
   },

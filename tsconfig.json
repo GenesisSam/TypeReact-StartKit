@@ -13,7 +13,10 @@
     "lib": [
       "es6",
       "es2016",
-      "dom"
+      "dom",
+      "esnext.intl",
+      "es2017.intl",
+      "es2018.intl"
     ],
     "typeRoots": [
       "./typings",
@@ -30,12 +33,7 @@
       "app/common/*": [
         "./app/common/*"
       ]
-    }
-  },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    },
+    "resolveJsonModule": true
+  }
 }
