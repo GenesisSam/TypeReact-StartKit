@@ -1,4 +1,6 @@
 {
+  "include": ["**/*", ".storybook/*"],
+  "exclude": ["node_modules/*"],
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,

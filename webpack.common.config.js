@@ -3,7 +3,6 @@ const {
   TsConfigPathsPlugin,
   CheckerPlugin
 } = require("awesome-typescript-loader");
-const path = require("path");
 
 module.exports = {
   entry: {

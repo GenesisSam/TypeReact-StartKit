@@ -50,6 +50,7 @@
     "jest": "24.8.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "source-map-loader": "^0.2.4",
+    "storybook-addon-intl": "^2.4.1",
     "style-loader": "^1.0.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.3.0",
