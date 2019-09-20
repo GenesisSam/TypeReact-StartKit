@@ -1,0 +1,3 @@
+export const APP_TYPES = {
+	CHANGE_CURRENT_USER: "APP.CHANGE_CURRENT_USER",
+};

@@ -1,6 +1,6 @@
-import { Action } from "redux";
+import { AllActions } from "app/actions";
 
-export default function reducer(state: any = {}, action: Action) {
+export default function reducer(state: any = {}, action: AllActions) {
 	switch (action.type) {
 		default:
 			return state;
