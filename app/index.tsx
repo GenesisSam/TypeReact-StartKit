@@ -6,9 +6,11 @@ import { Switch, Route } from "react-router";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
-
+import { ThemeProvider } from "styled-components";
 import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "connected-react-router";
+
+import theme from "common/theme";
 
 import Hello from "./landing";
 import rootReducer from "./rootReducer";
@@ -30,14 +32,16 @@ class ClientRender {
 
 		ReactDOM.render(
 			<IntlProvider locale={navigator.language} messages={messages}>
-				<Provider store={store}>
-					<ConnectedRouter history={history}>
-						<Switch>
-							<Route exact path="/hello" component={() => <div>H3llo World!</div>} />
-							<Route exact component={Hello} />
-						</Switch>
-					</ConnectedRouter>
-				</Provider>
+				<ConnectedRouter history={history}>
+					<Provider store={store}>
+						<ThemeProvider theme={theme}>
+							<Switch>
+								<Route exact path="/hello" component={() => <div>H3llo World!</div>} />
+								<Route exact component={Hello} />
+							</Switch>
+						</ThemeProvider>
+					</Provider>
+				</ConnectedRouter>
 			</IntlProvider>,
 			document.getElementById("mainContainer"),
 		);
